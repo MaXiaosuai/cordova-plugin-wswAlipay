@@ -1,0 +1,14 @@
+{
+  "name": "wswalipay",
+  "version": "1.0.0",
+  "description": "支付宝登录支付",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "支付宝"
+  ],
+  "author": "",
+  "license": "ISC"
+}

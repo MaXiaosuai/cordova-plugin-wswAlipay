@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-wswAlipay" version="1.0.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>wswAlipay</name>
+    <js-module name="wswAlipay" src="www/wswAlipay.js">
+        <clobbers target="wswAlipay" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="wswAlipay">
+                <param name="ios-package" value="wswAlipay" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/wswAlipay.h" />
+        <source-file src="src/ios/wswAlipay.m" />
+    </platform>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="wswAlipay">
+                <param name="android-package" value="cordova-plugin-wswAlipay.wswAlipay" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/wswAlipay.java" target-dir="src/cordova-plugin-wswAlipay/wswAlipay" />
+    </platform>
+</plugin>
