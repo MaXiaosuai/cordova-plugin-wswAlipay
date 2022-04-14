@@ -40,6 +40,8 @@
 
         <header-file src="src/ios/wswAlipay.h" />
         <source-file src="src/ios/wswAlipay.m" />
+        <header-file src="src/ios/AppDelegate+WSWAlipay.h" />
+        <source-file src="src/ios/AppDelegate+WSWAlipay.m" />
 
         <!-- alipay Official -->
         <framework src="CoreTelephony.framework" weak="true"/>
