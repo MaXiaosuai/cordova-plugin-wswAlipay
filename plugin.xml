@@ -43,11 +43,10 @@
 
         <!-- alipay Official -->
         <source-file src="src/ios/libs/AlipaySDK-iOS/AlipaySDK.bundle" framework="true" />
-        <source-file src="src/ios/libs/AlipaySDK.framework/AlipaySDK" framework="true" />
-        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/AFServiceCenter"/>
-        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/AFServiceResponse"  />
-        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/AlipaySDK"  />
-        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/APayAuthInfo" />
+        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/AFServiceCenter.h"/>
+        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/AFServiceResponse.h"  />
+        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/AlipaySDK.h"  />
+        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/APayAuthInfo.h" />
 
     </platform>
     <platform name="android">
