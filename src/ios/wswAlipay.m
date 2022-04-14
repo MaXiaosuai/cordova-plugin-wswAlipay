@@ -75,6 +75,7 @@
         [self failWithCallbackID:command.callbackId withMessage:@"参数格式错误"];
         return ;
     }
+     self.currentCallbackId = command.callbackId;
     [[AlipaySDK defaultService] payOrder:params[@"sign"] fromScheme:self.alipayId callback:^(NSDictionary *resultDic) {
         NSString *resultStatus =[resultDic objectForKey:@"resultStatus"];
         
@@ -92,6 +93,14 @@
 {
 
     [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+         NSString *resultStatus =[resultDic objectForKey:@"resultStatus"];
+        
+        if([resultStatus isEqualToString:@"9000"])
+        {
+            [self successWithCallbackID:self.currentCallbackId withMessageDic:resultDic];
+        }else{
+            [self failWithCallbackID:self.currentCallbackId withMessage:@"支付失败"];
+        }
             
     }];
     [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {

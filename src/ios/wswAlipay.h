@@ -7,6 +7,7 @@
 - (void)aliPay:(CDVInvokedUrlCommand*)command;
 - (BOOL)handleAlipayOpenURL:(NSURL *)url;
 @property (nonatomic, strong) NSString *alipayId;
+@property (nonatomic, strong) NSString *currentCallbackId;
 
 @end
 
