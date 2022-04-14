@@ -3,6 +3,7 @@
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>wswAlipay</name>
+    <preference name="alipayid" />
     <js-module name="wswAlipay" src="www/wswAlipay.js">
         <clobbers target="wswAlipay" />
     </js-module>
@@ -10,7 +11,9 @@
         <config-file parent="/*" target="config.xml">
             <feature name="wswAlipay">
                 <param name="ios-package" value="wswAlipay" />
+                <param name="onload" value="true" />
             </feature>
+            <preference name="alipayid" value="$alipayid"/>
         </config-file>
         <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
             <array>
@@ -32,7 +35,7 @@
                     <string>alipay</string>
                     <key>CFBundleURLSchemes</key>
                     <array>
-                        <string>wswalipay</string>
+                        <string>$alipayid</string>
                     </array>
                 </dict>
             </array>

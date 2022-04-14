@@ -4,6 +4,18 @@
 
 @implementation wswAlipay
 
+- (void)pluginInitialize {
+    NSString* appId = [[self.commandDelegate settings] objectForKey:@"alipayid"];
+    
+    if (appId) {
+        self.alipayId = appId;
+    }else
+    {
+        self.alipayId = @"wswalipay";
+    }
+}
+
+
 - (void)aliLogin:(CDVInvokedUrlCommand *)command
 {
     NSLog(@"登录");
@@ -14,7 +26,7 @@
         return ;
     }
     
-    [[AlipaySDK defaultService] auth_V2WithInfo:params[@"sign"] fromScheme:@"wswalipay" callback:^(NSDictionary *resultDic) {
+    [[AlipaySDK defaultService] auth_V2WithInfo:params[@"sign"] fromScheme:self.alipayId callback:^(NSDictionary *resultDic) {
         NSLog(@"result=========== %@",resultDic);
         // 解析 auth code
         NSString *result = resultDic[@"result"];
@@ -63,7 +75,7 @@
         [self failWithCallbackID:command.callbackId withMessage:@"参数格式错误"];
         return ;
     }
-    [[AlipaySDK defaultService] payOrder:params[@"sign"] fromScheme:@"mqalipay" callback:^(NSDictionary *resultDic) {
+    [[AlipaySDK defaultService] payOrder:params[@"sign"] fromScheme:self.alipayId callback:^(NSDictionary *resultDic) {
         NSString *resultStatus =[resultDic objectForKey:@"resultStatus"];
         
         if([resultStatus isEqualToString:@"9000"])
