@@ -54,8 +54,8 @@
         <framework src="QuartzCore.framework" weak="true"/>
         <framework src="Foundation.framework" weak="true"/>
 
-        <framework src="src/ios/lib/AlipaySDK.framework" custom="true"/>
-        <resource-file src="src/ios/lib/AlipaySDK.bundle"/>
+        <framework src="src/ios/libs/AlipaySDK.framework" custom="true"/>
+        <resource-file src="src/ios/libs/AlipaySDK.bundle"/>
 
     </platform>
     <platform name="android">
