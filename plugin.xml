@@ -12,8 +12,43 @@
                 <param name="ios-package" value="wswAlipay" />
             </feature>
         </config-file>
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>alipay</string>
+            </array>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+            <dict>
+                <key>NSAllowsArbitraryLoads</key>
+                <true/>
+            </dict>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>CFBundleURLName</key>
+                    <string>alipay</string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>wswalipay</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>        
+
         <header-file src="src/ios/wswAlipay.h" />
         <source-file src="src/ios/wswAlipay.m" />
+
+        <!-- alipay Official -->
+        <source-file src="src/ios/libs/AlipaySDK-iOS/AlipaySDK.bundle" framework="true" />
+        <source-file src="src/ios/libs/AlipaySDK.framework/AlipaySDK" framework="true" />
+        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/AFServiceCenter"/>
+        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/AFServiceResponse"  />
+        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/AlipaySDK"  />
+        <header-file src="src/ios/libs/AlipaySDK.framework/Headers/APayAuthInfo" />
+
     </platform>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
