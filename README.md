@@ -27,3 +27,5 @@ wswAlipay.aliLogin({'sign':'后台传过来的'}).then((res)=>{
   alert(err);
 })
 ```
+
+# 好用给点个星星啦 哈哈哈
