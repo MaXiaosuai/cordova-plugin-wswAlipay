@@ -76,9 +76,9 @@
           <uses-permission android:name="android.permission.READ_PHONE_STATE" />
           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file>
-        <source-file src="src/android/Alipay.java" target-dir="src/org/apache/cordova/ali"/>
+        <source-file src="src/android/wswAlipay.java" target-dir="src/org/apache/cordova/ali"/>
         <lib-file src="src/android/libs/alipaysdk-15.8.03.210428205839.aar"/>
-        <framework src="src/android/Alipay.gradle" custom="true" type="gradleReference"/>
+        <framework src="src/android/wswAlipay.gradle" custom="true" type="gradleReference"/>
 
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
         <source-file src="src/android/wswAlipay.java" target-dir="src/cordova-plugin-wswAlipay/wswAlipay" />
