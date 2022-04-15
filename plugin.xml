@@ -66,9 +66,20 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="wswAlipay">
-                <param name="android-package" value="cordova-plugin-wswAlipay.wswAlipay" />
+                <param name="android-package" value="org.apache.cordova.ali.wswAlipay" />
             </feature>
         </config-file>
+         <config-file target="AndroidManifest.xml" parent="/*">
+          <uses-permission android:name="android.permission.INTERNET" />
+          <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+          <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+          <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+        <source-file src="src/android/Alipay.java" target-dir="src/org/apache/cordova/ali"/>
+        <lib-file src="src/android/libs/alipaysdk-15.8.03.210428205839.aar"/>
+        <framework src="src/android/Alipay.gradle" custom="true" type="gradleReference"/>
+
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
         <source-file src="src/android/wswAlipay.java" target-dir="src/cordova-plugin-wswAlipay/wswAlipay" />
     </platform>

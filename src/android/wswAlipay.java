@@ -14,19 +14,38 @@ public class wswAlipay extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("coolMethod")) {
-            String message = args.getString(0);
-            this.coolMethod(message, callbackContext);
-            return true;
-        }
+        if (action.equals("aliLogin")) {
+            return aliLogin(args, callbackContext);
+        } else if (action.equals("aliPay")) {
+            return aliPay(args, callbackContext);
+        } 
+
         return false;
     }
 
-    private void coolMethod(String message, CallbackContext callbackContext) {
-        if (message != null && message.length() > 0) {
-            callbackContext.success(message);
-        } else {
-            callbackContext.error("Expected one non-empty string argument.");
-        }
+    protected boolean aliLogin(CordovaArgs args, CallbackContext callbackContext) {
+       
+        params = args.getJSONObject(0);
+
+        Log.i(TAG, "aliLogin request has been sent successfully.");
+        sendNoResultPluginResult(callbackContext);
+        return true;
+    }
+
+     protected boolean aliPay(CordovaArgs args, CallbackContext callbackContext) {
+        Log.i(TAG, "aliPay request has been sent successfully.");
+        sendNoResultPluginResult(callbackContext);
+
+        return true;
+    }
+
+      private void sendNoResultPluginResult(CallbackContext callbackContext) {
+        // save current callback context
+        currentCallbackContext = callbackContext;
+
+        // send no result and keep callback
+        PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT);
+        result.setKeepCallback(true);
+        callbackContext.sendPluginResult(result);
     }
 }
