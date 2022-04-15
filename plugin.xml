@@ -67,7 +67,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="wswAlipay">
-                <param name="android-package" value="xu.li.cordova.wswAlipay.wswAlipay" />
+                <param name="android-package" value="ma.xiaoshuai.cordova.wswAlipay.wswAlipay" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml">
@@ -79,7 +79,10 @@
         </config-file>
         <lib-file src="src/android/libs/alipaysdk-15.8.03.210428205839.aar"/>
         <framework src="src/android/wswAlipay.gradle" custom="true" type="gradleReference"/>
-        <source-file src="src/android/wswAlipay.java" target-dir="src/xu/li/cordova/wswAlipay" />
+        <source-file src="src/android/wswAlipay.java" target-dir="src/ma/xiaoshuai/cordova/wswAlipay" />
+        <source-file src="src/android/AuthResult.java" target-dir="src/ma/xiaoshuai/cordova/AuthResult" />
+        <source-file src="src/android/PayResult.java" target-dir="src/ma/xiaoshuai/cordova/PayResult" />
+
     </platform>
 
 </plugin>
