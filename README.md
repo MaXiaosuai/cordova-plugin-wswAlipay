@@ -1,3 +1,24 @@
 # cordova-plugin-wswAlipay
-支付宝
-cordov 支付宝登录 支付宝支付插件
+ionic angular 支付宝插件 包含支付宝登录和支付宝支付
+
+
+cordova plugin add https://github.com/MaXiaosuai/cordova-plugin-wswAlipay --variable alipayid=随便什么标志
+npm i wsw-alipay
+
+ts中
+import { wswAlipay } from 'wsw-alipay';
+
+///登录
+wswAlipay.aliLogin({'sign':'后台传过来的'}).then((res)=>{
+  alert('登录成功'+res);
+}).catch((err)=>{
+  alert(err);
+})
+
+
+///支付
+ wswAlipay.aliPay({'sign':'后台传过来的'}).then((res)=>{
+  alert('支付成功');
+}).catch((err)=>{
+  alert(err);
+})
