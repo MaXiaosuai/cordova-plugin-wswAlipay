@@ -6,5 +6,8 @@ module.exports = {
     },
     aliPay:function (arg0,success, error) {
         exec(success, error, 'wswAlipay', 'aliPay', [arg0]);
+    },
+    jumpPay:function (arg0,success, error) {
+        exec(success, error, 'wswAlipay', 'jumpPay', [arg0]);
     }
 }
