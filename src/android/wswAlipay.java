@@ -20,6 +20,7 @@ import android.os.Handler;
 
 import java.util.Map;
 
+
 /**
  * This class echoes a string called from JavaScript.
  */
@@ -37,6 +38,8 @@ public class wswAlipay extends CordovaPlugin {
             return aliLogin(args, callbackContext);
         } else if (action.equals("aliPay")) {
             return aliPay(args, callbackContext);
+        }else if (action.equals("jumpPay")) {
+          return jumpPay(args, callbackContext);
         }
 
         return false;
@@ -103,6 +106,32 @@ public class wswAlipay extends CordovaPlugin {
     };
   };
 
+
+      @SuppressLint("LongLogTag")
+      protected boolean jumpPay(CordovaArgs args, CallbackContext callbackContext) {
+        Log.i(TAG, "aliPay request has been sent successfully.");
+        JSONObject params = null;
+        currentCallbackContext = callbackContext;
+        try {
+          params = args.getJSONObject(0);
+          String url = params.getString("url");
+          String pamurl = params.getString("pamurl");
+
+          String payInfo = URLEncoder.encode(pamurl);
+          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url+ "?" + payInfo));
+          cordova.getContext().startActivity(intent);
+          callbackContext.success("跳转支付宝小程序");
+
+          return true;
+
+        } catch (JSONException e) {
+          e.printStackTrace();
+          callbackContext.error(ERROR_INVALID_PARAMETERS);
+          return  false;
+        }
+
+
+      }
      @SuppressLint("LongLogTag")
      protected boolean aliPay(CordovaArgs args, CallbackContext callbackContext) {
         Log.i(TAG, "aliPay request has been sent successfully.");
