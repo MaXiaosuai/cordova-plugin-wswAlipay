@@ -66,6 +66,29 @@
     [self.commandDelegate sendPluginResult:commandResult callbackId:callbackID];
 }
 
+- (void)jumpPay:(CDVInvokedUrlCommand *)command
+{
+    NSDictionary *params = [command.arguments objectAtIndex:0];
+
+    if (![params objectForKey:@"url"]) {
+        [self failWithCallbackID:command.callbackId withMessage:@"参数格式错误"];
+        return ;
+    }
+    NSString *pamurl = @"";
+    if ([params objectForKey:@"pamurl"]) {
+        pamurl =  [params[@"pamurl"] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"!$'()*+,-./:;?@_~%#[]"]];
+    }
+    
+    NSString *jumpAlipayStr = [NSString stringWithFormat:@"%@?%@",params[@"url"],pamurl];
+
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:jumpAlipayStr] options:@{} completionHandler:^(BOOL success) {
+         if (success) {
+             [self successWithCallbackID:command.callbackId withMessage:@"跳转支付宝小程序"];
+         }else{
+             [self failWithCallbackID:command.callbackId withMessage:@"支付失败"];
+         }
+     }];
+}
 
 - (void)aliPay:(CDVInvokedUrlCommand *)command
 {
