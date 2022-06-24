@@ -1,6 +1,8 @@
 package ma.xiaoshuai.cordova.wswAlipay;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,8 +20,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.os.Handler;
 
+import java.net.URLEncoder;
 import java.util.Map;
-
 
 /**
  * This class echoes a string called from JavaScript.
